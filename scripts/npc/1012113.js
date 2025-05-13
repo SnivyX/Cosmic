@@ -66,7 +66,7 @@ function action(mode, type, selection) {
             if (status == 0) {
                 cm.sendOk("You will now be warped out, thank you for helping us!");
             } else {
-                cm.warp(100000200);
+                cm.warp(000000004);
                 cm.dispose();
 
             }

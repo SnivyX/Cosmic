@@ -51,9 +51,10 @@ public class GameConstants {
     public static int getPlayerBonusExpRate(int slot) {
         return (EXP_RATE_GAIN[slot]);
     }
-
-    // "goto" command for players
+    // "goto" beginner
+    // "goto" command for dono players
     public static final Map<String, Integer> GOTO_TOWNS = new HashMap<>() {{
+        put("fm", MapId.FM_ENTRANCE);
         put("southperry", MapId.SOUTHPERRY);
         put("amherst", MapId.AMHERST);
         put("henesys", MapId.HENESYS);
@@ -90,6 +91,9 @@ public class GameConstants {
         put("square", MapId.KERNING_SQUARE);
         put("neo", MapId.NEO_CITY);
         put("mushking", MapId.MUSHROOM_KINGDOM);
+        put("ulu", MapId.ULU_CITY);
+        put("gacha", MapId.GACHA_MAP);
+        put("pq", MapId.PQ_MAP);
     }};
 
     // "goto" command for only-GMs
@@ -112,7 +116,7 @@ public class GameConstants {
         put("keep", MapId.CRIMSONWOOD_KEEP);
         put("dojo", MapId.MU_LUNG_DOJO_HALL);
         put("bosspq", MapId.EXCLUSIVE_TRAINING_CENTER);
-        put("fm", MapId.FM_ENTRANCE);
+        put("dev", MapId.DEVELOPERS_HQ);
     }};
 
     public static final List<String> GAME_SONGS = new ArrayList<>(170) {{
@@ -478,7 +482,7 @@ public class GameConstants {
                 return 120;   // 3rd job
 
             default:
-                return (job.getId() / 1000 == 1) ? 120 : 200;   // 4th job: cygnus is 120, rest is 200
+                return (job.getId() / 1000 == 1) ? 120 : 300;   // 4th job: cygnus is 120, rest is 200
         }
     }
 

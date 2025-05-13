@@ -27,6 +27,10 @@
 
 var disabled = false;
 var belts = Array(1132000, 1132001, 1132002, 1132003, 1132004);
+var gloves = Array(1082394, 1082393); // Glove item IDs
+var gloves_level = Array(120, 150);   // Level requirements
+var gloves_on_inventory;
+var gloves_points = Array(100000, 5000000); // Training point costs
 var belt_level = Array(25, 35, 45, 60, 75);
 var belt_on_inventory;
 var belt_points;
@@ -44,8 +48,9 @@ function start() {
 
     const YamlConfig = Java.type('config.YamlConfig');
     belt_points = YamlConfig.config.server.USE_FAST_DOJO_UPGRADE ? Array(10, 90, 200, 460, 850) : Array(200, 1800, 4000, 9200, 17000);
-
+    gloves_points = YamlConfig.config.server.USE_FAST_DOJO_UPGRADE ? Array(5000, 10000) : Array(100000, 500000);
     belt_on_inventory = [];
+    gloves_on_inventory = [];
     for (var i = 0; i < belts.length; i++) {
         belt_on_inventory.push(cm.haveItemWithId(belts[i], true));
     }
@@ -77,7 +82,7 @@ function action(mode, type, selection) {
                 cm.sendSimple(text);
             } else if (cm.getPlayer().getLevel() >= 25) {
                 if (cm.getPlayer().getMap().getId() == 925020001) {
-                    cm.sendSimple("My master is the strongest person in Mu Lung, and you want to challenge him? Fine, but you'll regret it later.\r\n\r\n#b#L0#I want to challenge him alone.#l\r\n#L1#I want to challenge him with a party.#l\r\n\r\n#L2#I want to receive a belt.#l\r\n#L3#I want to reset my training points.#l\r\n#L4#I want to receive a medal.#l\r\n#L5#What is a Mu Lung Dojo?#l");
+                    cm.sendSimple("My master is the strongest person in Mu Lung, and you want to challenge him? Fine, but you'll regret it later.\r\n\r\n#b#L0#I want to challenge him alone.#l\r\n#L1#I want to challenge him with a party.\r\n\r\n#L2#I want to receive a pair of gloves.#l\r\n\r\n#L3#I want to receive a belt.#l\r\n#L4#I want to reset my training points.#l\r\n#L5#I want to receive a medal.#l\r\n#L6#What is a Mu Lung Dojo?#l");
                 } else {
                     cm.sendYesNo("What, you're giving up? You just need to get to the next level! Do you really want to quit and leave?");
                 }
@@ -167,8 +172,8 @@ function action(mode, type, selection) {
                             //    cm.sendNext("You're going to take on the challenge as a one-man party?");
                         //}
 
-                        else if (!isBetween(party, 30)) {
-                            cm.sendNext("Your partys level ranges are too broad to enter. Please make sure all of your party members are within #r30 levels#k of each other.");
+                        else if (!isBetween(party, 200)) {
+                            cm.sendNext("Your partys level ranges are too broad to enter. Please make sure all of your party members are within #r200 levels#k of each other.");
                             cm.dispose();
 
                         } else {
@@ -191,7 +196,45 @@ function action(mode, type, selection) {
 
                         }
 
-                    } else if (selectedMenu == 2) { //I want to receive a belt.
+                    }else if (selectedMenu == 2) { // I want to receive a pair of gloves
+                        if (status == 1) {
+                            var selStr = "You have #b" + cm.getPlayer().getDojoPoints() + "#k training points. Choose your gloves:\r\n";
+                            for (var i = 0; i < gloves.length; i++) {
+                                selStr += "\r\n#L" + i + "##i" + gloves[i] + "# #t" + gloves[i] + "# (Level " + gloves_level[i] + "+, " + gloves_points[i] + " points)";
+                            }
+                            cm.sendSimple(selStr);
+                        } else if (status == 2) {
+                            var glove = gloves[selection];
+                            var level = gloves_level[selection];
+                            var points = gloves_points[selection];
+
+                            if (!cm.canHold(glove)) {
+                                cm.sendNext("Please make room in your EQUIP inventory before trying to claim gloves!");
+                                cm.dispose();
+                                return;
+                            }
+
+                            if (cm.getPlayer().getLevel() < level) {
+                                cm.sendNext("You need to be at least level #b" + level + "#k to receive these gloves.");
+                                cm.dispose();
+                                return;
+                            }
+
+                            if (cm.getPlayer().getDojoPoints() < points) {
+                                cm.sendNext("You need at least #b" + points + "#k training points to receive these gloves. You currently have " + cm.getPlayer().getDojoPoints() + " points.");
+                                cm.dispose();
+                                return;
+                            }
+
+                            // All requirements met
+                            cm.gainItem(glove, 1);
+                            cm.getPlayer().setDojoPoints(cm.getPlayer().getDojoPoints() - points);
+                            cm.sendNext("Here's your #i" + glove + "# #b#t" + glove + "##k. I've deducted #r" + points + "#k training points from your total.");
+                            cm.dispose();
+                        }
+
+
+                    } else if (selectedMenu == 3) { //I want to receive a belt.
                         if (!cm.canHold(belts[0])) {
                             cm.sendNext("Make room in your EQUIP inventory before trying to claim a belt!");
                             cm.dispose();
@@ -241,7 +284,7 @@ function action(mode, type, selection) {
                             cm.dispose();
 
                         }
-                    } else if (selectedMenu == 3) { //I want to reset my training points.
+                    } else if (selectedMenu == 4) { //I want to reset my training points.
                         if (status == 1) {
                             cm.sendYesNo("You do know that if you reset your training points, it returns to 0, right? Although, that's not always a bad thing. If you can start earning training points again after you reset, you can receive the belts once more. Do you want to reset your training points now?");
                         } else if (status == 2) {
@@ -254,7 +297,7 @@ function action(mode, type, selection) {
                             cm.dispose();
 
                         }
-                    } else if (selectedMenu == 4) { //I want to receive a medal.
+                    } else if (selectedMenu == 5) { //I want to receive a medal.
                         if (status == 1 && cm.getPlayer().getVanquisherStage() <= 0) {
                             cm.sendYesNo("You haven't attempted the medal yet? If you defeat one type of monster in Mu Lung Dojo #b100 times#k you can receive a title called #b#t" + (1142033 + cm.getPlayer().getVanquisherStage()) + "##k. It looks like you haven't even earned the #b#t" + (1142033 + cm.getPlayer().getVanquisherStage()) + "##k... Do you want to try out for the #b#t" + (1142033 + cm.getPlayer().getVanquisherStage()) + "##k?");
                         } else if (status == 2 || cm.getPlayer().getVanquisherStage() > 0) {
@@ -281,11 +324,12 @@ function action(mode, type, selection) {
                             cm.dispose();
 
                         }
-                    } else if (selectedMenu == 5) { //What is a Mu Lung Dojo?
+                    } else if (selectedMenu == 6) { //What is a Mu Lung Dojo?
                         cm.sendNext("Our master is the strongest person in Mu Lung. The place he built is called the Mu Lung Dojo, a building that is #r38 stories#k tall! You can train yourself as you go up each level. Of course, it'll be hard for someone at your level to reach the top.");
                         cm.dispose();
 
                     }
+
                 } else {
                     cm.dispose();
 
@@ -308,8 +352,8 @@ function action(mode, type, selection) {
                                 return;
                             }
 
-                            if (!isBetween(cm.getParty(), 35)) {
-                                cm.sendOk("Your partys level ranges are too broad to enter. Please make sure all of your party members are within #r35 levels#k of each other.");
+                            if (!isBetween(cm.getParty(), 200)) {
+                                cm.sendOk("Your partys level ranges are too broad to enter. Please make sure all of your party members are within #r200 levels#k of each other.");
                                 cm.dispose();
                                 return;
                             }

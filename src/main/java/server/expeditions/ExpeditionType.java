@@ -29,19 +29,32 @@ import config.YamlConfig;
  */
 
 public enum ExpeditionType {
-    BALROG_EASY(3, 30, 50, 255, 5),
-    BALROG_NORMAL(6, 30, 50, 255, 5),
-    SCARGA(6, 30, 100, 255, 5),
-    SHOWA(3, 30, 100, 255, 5),
-    ZAKUM(6, 30, 50, 255, 5),
-    HORNTAIL(6, 30, 100, 255, 5),
-    CHAOS_ZAKUM(6, 30, 120, 255, 5),
-    CHAOS_HORNTAIL(6, 30, 120, 255, 5),
+    BALROG_EASY(1, 30, 50, 255, 5),
+    BALROG_NORMAL(1, 30, 50, 255, 5),
+    SCARGA(3, 30, 100, 255, 5),
+    SHOWA(2, 30, 100, 255, 5),
+    ZAKUM(3, 30, 50, 255, 5),
+    HORNTAIL(3, 30, 100, 255, 5),
+    CHAOS_ZAKUM(3, 30, 120, 255, 5),
+    CHAOS_HORNTAIL(3, 30, 120, 255, 5),
     ARIANT(2, 7, 20, 30, 5),
     ARIANT1(2, 7, 20, 30, 5),
     ARIANT2(2, 7, 20, 30, 5),
-    PINKBEAN(6, 30, 120, 255, 5),
-    CWKPQ(6, 30, 90, 255, 5);   // CWKPQ min-level 90, found thanks to Cato
+    PINKBEAN(3, 30, 120, 255, 5),
+    CWKPQ(3, 30, 90, 255, 5), // CWKPQ min-level 90, found thanks to Cato
+    VONLEON(1, 6, 1, 255, 15),
+    CYGNUS(3, 30, 120, 255, 5),
+    WILLSPIDER(3, 30, 200, 255, 5),
+    VERUS(3, 30, 200, 255, 5),
+    DARKNELL(3, 30, 200, 255, 5),
+    KREXEL(2, 30, 120, 255, 5),
+    CASTELLAN(2, 30, 120, 255, 5),
+    LUCID(2, 30, 220, 255, 5),
+    NORMALLOTUS(2, 30, 200, 255, 5),
+    HARDLOTUS(2, 30, 190, 255, 5),
+    EASYMAGNUS(2, 30, 150, 255, 5),
+    NORMALMAGNUS(2, 30, 170, 255, 5),
+    HARDMAGNUS(2, 30, 200, 255, 5);
 
     private final int minSize;
     private final int maxSize;

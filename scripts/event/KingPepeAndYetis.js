@@ -1,4 +1,4 @@
-var minPlayers = 1;
+var minPlayers = 1 , maxPlayers = 6;
 var timeLimit = 20; //20 minutes
 var eventTimer = 1000 * 60 * timeLimit;
 var exitMap = 106021400;

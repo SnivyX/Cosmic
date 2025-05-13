@@ -47,7 +47,7 @@ function action(mode, type, selection) {
             status--;
         }
 
-        if (cm.getMapId() != 261000021) {
+        if (cm.getMapId() != 000000004) {
             if (status == 0) {
                 cm.sendYesNo("We must keep fighting to save Romeo, please keep your pace. If you are not feeling so well to continue, your companions and I will understand... So, are you going to retreat?");
             } else if (status == 1) {

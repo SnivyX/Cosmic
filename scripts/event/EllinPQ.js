@@ -24,11 +24,11 @@
  */
 
 var isPq = true;
-var minPlayers = 4, maxPlayers = 6;
-var minLevel = 44, maxLevel = 55;
+var minPlayers = 2, maxPlayers = 6;
+var minLevel = 40, maxLevel = 255;
 var entryMap = 930000000;
 var exitMap = 930000800;
-var recruitMap = 300030100;
+var recruitMap = 000000004;
 var clearMap = 930000800;
 
 var minMapId = 930000000;
@@ -63,7 +63,7 @@ function setEventRequirements() {
         reqStr += minLevel;
     }
 
-    reqStr += "\r\n    For #radventurers only#k.";
+    reqStr += "\r\n    For #radventurers, cygnus and arans!#k.";
 
     reqStr += "\r\n    Time limit: ";
     reqStr += eventTime + " minutes";
@@ -88,7 +88,7 @@ function getEligibleParty(party) {      //selects, from the given party, the tea
         for (var i = 0; i < party.size(); i++) {
             var ch = partyList[i];
 
-            if (ch.getMapId() == recruitMap && ch.getLevel() >= minLevel && ch.getLevel() <= maxLevel && Math.floor(ch.getJob().getId() / 1000) == 0) {  //only adventurers
+            if (ch.getMapId() == recruitMap && ch.getLevel() >= minLevel && ch.getLevel() && Math.floor(ch.getJob().getId() / 1000) == 0) {  //only adventurers
                 if (ch.isLeader()) {
                     hasLeader = true;
                 }

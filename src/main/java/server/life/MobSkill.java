@@ -210,7 +210,7 @@ public class MobSkill {
             case SEAL -> disease = Disease.SEAL;
             case DARKNESS -> disease = Disease.DARKNESS;
             case WEAKNESS -> disease = Disease.WEAKEN;
-            case STUN -> disease = Disease.STUN;
+            //case STUN -> disease = Disease.STUN;
             case CURSE -> disease = Disease.CURSE;
             case POISON -> disease = Disease.POISON;
             case SLOW -> disease = Disease.SLOW;

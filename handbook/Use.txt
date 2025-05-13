@@ -910,10 +910,10 @@
 2048011 - Scroll for Pet Equip. for INT 60% - Improves intelligence on pet equipments.\nSuccess rate:60%, INT+1. The success rate of this scroll can be enhanced by Vega's Spell.
 2048012 - Scroll for Pet Equip. for DEX 60% - Improves dexterity on pet equipments.\nSuccess rate:60%, DEX+1. The success rate of this scroll can be enhanced by Vega's Spell.
 2048013 - Scroll for Pet Equip. for LUK 60% - Improves luck on pet equipments.\nSuccess rate:60%, LUK+1. The success rate of this scroll can be enhanced by Vega's Spell.
-2049000 - Clean Slate Scroll 1% - Recovers the lost number of upgrades due to failed scroll by 1. Not available on Cash Items. Success rate:1%, If failed, the item will be destroyed at a 2% rate...
-2049001 - Clean Slate Scroll 3% - Recovers the lost number of upgrades due to failed scroll by 1. Success rate:3%, If failed, the item will be destroyed at a 6% rate..
-2049002 - Clean Slate Scroll 5% - Recovers the lost number of upgrades due to failed scroll by 1. Success rate:5%, If failed, the item will be destroyed at a 10% rate..
-2049003 - Clean Slate Scroll 20% - Recovers the lost number of upgrades due to failed scroll by 1. Success rate:20%, If failed, the item will be destroyed at a 50% rate..
+2049000 - Clean Slate Scroll 1% - Recovers the lost number of upgrades due to failed scroll by 1. Not available on Cash Items. Success rate:1%
+2049001 - Clean Slate Scroll 3% - Recovers the lost number of upgrades due to failed scroll by 1. Success rate:3%
+2049002 - Clean Slate Scroll 5% - Recovers the lost number of upgrades due to failed scroll by 1. Success rate:5%
+2049003 - Clean Slate Scroll 20% - Recovers the lost number of upgrades due to failed scroll by 1. Success rate:20%
 2049100 - Chaos Scroll 60% - Alters the equipment for better or worse. Not available on Cash Items.\nSuccess rate:60%
 2049101 - Liar Tree Sap 100% - Use this on Pinocchio's nose to improve or downgrade the item options.\nSuccess rate:100%
 2049102 - Maple Syrup 100% - Use it on Maple Leaf to improve or downgrade the item option. Success rate:100%

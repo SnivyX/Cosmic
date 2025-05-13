@@ -26,7 +26,7 @@ var otherMap;
 var minMapId = 103040410;
 var maxMapId = 103040460;
 
-var minPlayers = 1;
+var minPlayers = 1, maxPlayers = 6;
 var fightTime = 30;
 var timer = 1000 * 60 * fightTime;
 

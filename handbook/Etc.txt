@@ -2380,6 +2380,6 @@
 4032526 - John's Map - John's map that contains information on some island. That island is said to be the place where the dragon lies asleep.
 4160041 - Pet Command Guide : Gold Pig - A guide that has all the commands for the Gold Pig.\n#cDouble-click on the item to open the guide.#
 4220152 - Rainbow Drawing - A sheet of sketch paper that has a rainbow drawing.  \r\n#cYou can open it with your mouse by double-clicking.#
-4310000 - Perfect Pitch - This Music Note gives Inkwell the perfect pitch he's been dying to find. You can trade it for a rare item if you go to the Free Market Entrance or talk to Inkwell in Henesys before March 30th.
+4310000 - Perfect Pitch - This Music Note gives Inkwell the perfect pitch he's been dying to find. You can trade it for a rare item if you go to the Free Market Entrance or talk to Inkwell in Henesys.
 4160044 - Pet Command Guide : Baby Tiger - A guide that contains commands for Baby Tiger. \n#cYou can open the book by double-clicking on it.#
 4001434 - Gachapon Food Coupon - Use this coupon on a Gachapon machine to het a veriety of food. 

@@ -56,7 +56,7 @@ public class Skill {
         if (job == 2212) {
             return false;
         }
-        if (id == 22170001 || id == 22171003 || id == 22171004 || id == 22181002 || id == 22181003) {
+        if (job == 2217 || job == 2218) {
             return true;
         }
         return job % 10 == 2;

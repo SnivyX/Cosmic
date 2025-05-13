@@ -56,7 +56,6 @@ import server.quest.requirements.InfoNumberRequirement;
 import server.quest.requirements.IntervalRequirement;
 import server.quest.requirements.ItemRequirement;
 import server.quest.requirements.JobRequirement;
-import server.quest.requirements.MaxLevelRequirement;
 import server.quest.requirements.MesoRequirement;
 import server.quest.requirements.MinLevelRequirement;
 import server.quest.requirements.MinTamenessRequirement;
@@ -538,9 +537,9 @@ public class Quest {
             case ITEM:
                 ret = new ItemRequirement(this, data);
                 break;
-            case MAX_LEVEL:
-                ret = new MaxLevelRequirement(this, data);
-                break;
+            //case MAX_LEVEL:
+                //ret = new MaxLevelRequirementold(this, data);
+                //break;
             case MESO:
                 ret = new MesoRequirement(this, data);
                 break;

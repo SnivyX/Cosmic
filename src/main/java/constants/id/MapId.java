@@ -13,7 +13,7 @@ public class MapId {
     public static final int CRIMSONWOOD_VALLEY_1 = 610020000;
     public static final int CRIMSONWOOD_VALLEY_2 = 610020001;
     public static final int HENESYS_PQ = 910010000;
-    public static final int ORIGIN_OF_CLOCKTOWER = 220080001;
+    public static final int ORIGIN_OF_CLOCKTOWER = 220080000;
     public static final int CAVE_OF_PIANUS = 230040420;
     public static final int GUILD_HQ = 200000301;
     public static final int FM_ENTRANCE = 910000000;
@@ -60,6 +60,9 @@ public class MapId {
 
     public static final int SHOWA_SPA_M = 809000101;
     public static final int SHOWA_SPA_F = 809000201;
+    public static final int ULU_CITY = 541020000;
+    public static final int GACHA_MAP = 000000005;
+    public static final int PQ_MAP = 000000004;
 
     private static final int MAPLE_ISLAND_MIN = 0;
     private static final int MAPLE_ISLAND_MAX = 2000001;
@@ -221,13 +224,13 @@ public class MapId {
     public static final int ARPQ_LOBBY = 980010000;
     public static final int ARPQ_ARENA_1 = 980010101;
     public static final int ARPQ_ARENA_2 = 980010201;
-    public static final int ARPQ_ARENA_3 = 980010301;
+    //public static final int ARPQ_ARENA_3 = 980010301;
     public static final int ARPQ_KINGS_ROOM = 980010010;
 
     // Nett's pyramid
     public static final int NETTS_PYRAMID = 926010001;
     public static final int NETTS_PYRAMID_SOLO_BASE = 926010100;
-    public static final int NETTS_PYRAMID_PARTY_BASE = 926020100;
+    //public static final int NETTS_PYRAMID_PARTY_BASE = 926020100;
     private static final int NETTS_PYRAMID_MIN = NETTS_PYRAMID_SOLO_BASE;
     private static final int NETTS_PYRAMID_MAX = 926023500;
 

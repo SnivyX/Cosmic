@@ -2,7 +2,7 @@ package constants.id;
 
 public class NpcId {
     public static final int CUSTOM_DEV = 9977777;
-
+    public static final int KIN = 9900000;
     public static final int MAPLE_ADMINISTRATOR = 9010000;
     public static final int STEWARD = 9201143;
     public static final int DIMENSIONAL_MIRROR = 9010022;
@@ -17,6 +17,7 @@ public class NpcId {
     public static final int LILIN = 1202000;
     public static final int BILLY = 1052015;
     public static final int TEMPLE_KEEPER = 2140000;
+    public static final int GACHAPON_DONOR = 9201067;
 
     // Id in ascending order
     public static final int GACHAPON_HENESYS = 9100100;

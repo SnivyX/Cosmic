@@ -38,7 +38,7 @@ public class MaxStatCommand extends Command {
     public void execute(Client c, String[] params) {
         Character player = c.getPlayer();
         player.loseExp(player.getExp(), false, false);
-        player.setLevel(255);
+        player.setLevel(300);
         player.resetPlayerRates();
         if (YamlConfig.config.server.USE_ADD_RATES_BY_LEVEL) {
             player.setPlayerRates();

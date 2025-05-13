@@ -48,7 +48,7 @@ function action(mode, type, selection) {
         if (status == 0) {
             cm.sendNext("Come this way to return to Ludibrium.");
         } else {
-            cm.warp(220000000, 0);
+            cm.warp(000000004, 0);
             cm.dispose();
         }
     }

@@ -18,7 +18,7 @@ var n5 = 20; //50
 var cpqMap = 980000000;
 var cpqMinLvl = 30;
 var cpqMaxLvl = 50;
-var cpqMinAmt = 2;
+var cpqMinAmt = 1;
 var cpqMaxAmt = 6;
 
 // Ronan's custom ore refiner NPC

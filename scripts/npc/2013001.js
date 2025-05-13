@@ -43,7 +43,7 @@ function action(mode, type, selection) {
         }
 
         if (cm.getPlayer().getMapId() == 920011200) { //exit
-            cm.warp(200080101);
+            cm.warp(000000004);
             cm.dispose();
             return;
         }

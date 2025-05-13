@@ -10,7 +10,7 @@ var Ellinia_docked;
 var closeTime = 4 * 60 * 1000; //The time to close the gate
 var beginTime = 5 * 60 * 1000; //The time to begin the ride
 var rideTime = 10 * 60 * 1000; //The time that require move to destination
-var invasionStartTime = 3 * 60 * 1000; //The time to balrog ship approach
+var invasionStartTime = 1 * 60 * 1000; //The time to balrog ship approach
 var invasionDelayTime = 1 * 60 * 1000; //The time to balrog ship approach
 var invasionDelay = 5 * 1000; //The time that spawn balrog
 

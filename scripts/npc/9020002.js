@@ -46,9 +46,9 @@ function action(mode, type, selection) {
     var mapId = cm.getPlayer().getMapId();
     if (mapId == 103000890) {
         if (status == 0) {
-            cm.sendNext("To return back to the city, follow this way.");
+            cm.sendNext("To return back to the hub, follow this way.");
         } else {
-            cm.warp(103000000);
+            cm.warp(000000004);
             cm.dispose();
         }
     } else {
@@ -59,7 +59,7 @@ function action(mode, type, selection) {
             }
             cm.sendYesNo(outText);
         } else if (mode == 1) {
-            cm.warp(103000890, "st00"); // Warp player
+            cm.warp(000000004, "st00"); // Warp player
             cm.dispose();
         }
     }

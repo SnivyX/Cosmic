@@ -563,6 +563,9 @@ public class StatEffect {
                 case Hero.STANCE:
                 case Paladin.STANCE:
                 case DarkKnight.STANCE:
+                case Page.FORTITUDE:
+                    statups.add(new Pair<>(BuffStat.STANCE, iprop));
+                    break;
                 case Aran.FREEZE_STANDING:
                     statups.add(new Pair<>(BuffStat.STANCE, iprop));
                     break;
@@ -765,10 +768,11 @@ public class StatEffect {
                 case Shadower.NINJA_AMBUSH:
                     monsterStatus.put(MonsterStatus.NINJA_AMBUSH, ret.damage);
                     break;
-                case Page.THREATEN:
-                    monsterStatus.put(MonsterStatus.WATK, ret.x);
-                    monsterStatus.put(MonsterStatus.WDEF, ret.y);
-                    break;
+                //case Page.THREATEN:
+                    //statups.add(new Pair<>(BuffStat.STANCE, iprop));
+                    //monsterStatus.put(MonsterStatus.WATK, ret.x);
+                    //monsterStatus.put(MonsterStatus.WDEF, ret.y);
+                    //break;
                 case DragonKnight.DRAGON_ROAR:
                     ret.hpR = -x / 100.0;
                     monsterStatus.put(MonsterStatus.STUN, 1);
@@ -935,7 +939,7 @@ public class StatEffect {
         }
 
         if (primary && isHeal()) {
-            affectedPlayers = applyBuff(applyfrom, useMaxRange);
+            affectedPlayers = applyBuff(applyfrom);
         }
 
         int hpchange = calcHPChange(applyfrom, primary, affectedPlayers);
@@ -1036,7 +1040,7 @@ public class StatEffect {
 
         if (primary) {
             if (overTime) {
-                applyBuff(applyfrom, useMaxRange);
+                applyBuff(applyfrom);
             }
 
             if (isMonsterBuff()) {
@@ -1144,11 +1148,11 @@ public class StatEffect {
         return true;
     }
 
-    private int applyBuff(Character applyfrom, boolean useMaxRange) {
+    private int applyBuff(Character applyfrom) {
         int affectedc = 1;
 
         if (isPartyBuff() && (applyfrom.getParty() != null || isGmBuff())) {
-            Rectangle bounds = (!useMaxRange) ? calculateBoundingBox(applyfrom.getPosition(), applyfrom.isFacingLeft()) : new Rectangle(Integer.MIN_VALUE / 2, Integer.MIN_VALUE / 2, Integer.MAX_VALUE, Integer.MAX_VALUE);
+            Rectangle bounds =  new Rectangle(Integer.MIN_VALUE / 2, Integer.MIN_VALUE / 2, Integer.MAX_VALUE, Integer.MAX_VALUE);
             List<MapObject> affecteds = applyfrom.getMap().getMapObjectsInRect(bounds, Arrays.asList(MapObjectType.PLAYER));
             List<Character> affectedp = new ArrayList<>(affecteds.size());
             for (MapObject affectedmo : affecteds) {
@@ -1168,7 +1172,7 @@ public class StatEffect {
 
             affectedc += affectedp.size();   // used for heal
             for (Character affected : affectedp) {
-                applyTo(applyfrom, affected, false, null, useMaxRange, affectedc);
+                applyTo(applyfrom, affected, false, null, true, affectedc);
                 affected.sendPacket(PacketCreator.showOwnBuffEffect(sourceid, 2));
                 affected.getMap().broadcastMessage(affected, PacketCreator.showBuffEffect(affected.getId(), sourceid, 2), false);
             }
@@ -1523,7 +1527,7 @@ public class StatEffect {
             return false;
         }
         switch (sourceid) {
-            case Page.THREATEN:
+            case Page.FORTITUDE:
             case FPWizard.SLOW:
             case ILWizard.SLOW:
             case FPMage.SEAL:

@@ -53,7 +53,8 @@ public class Gachapon {
         LUDIBRIUM(NpcId.GACHAPON_LUDIBRIUM, 90, 8, 2, new Ludibrium()),
         NEW_LEAF_CITY(NpcId.GACHAPON_NLC, 90, 8, 2, new NewLeafCity()),
         EL_NATH(NpcId.GACHAPON_EL_NATH, 90, 8, 2, new ElNath()),
-        NAUTILUS_HARBOR(NpcId.GACHAPON_NAUTILUS, 90, 8, 2, new NautilusHarbor());
+        NAUTILUS_HARBOR(NpcId.GACHAPON_NAUTILUS, 90, 8, 2, new NautilusHarbor()),
+        DONOR_MAP(NpcId.GACHAPON_DONOR, 90, 8, 2, new Donor());
 
         private static final GachaponType[] values = GachaponType.values();
 

@@ -11,7 +11,7 @@ class AssignAPProcessorTest {
 
     @Test
     void getMinHp() {
-        int max_level = 200;
+        int max_level = 300;
         int cygnus_max_level = 120;
 
         BiFunction<Job,Integer,Integer> f = AssignAPProcessor::getMinHp;
@@ -124,7 +124,7 @@ class AssignAPProcessorTest {
 
     @Test
     void getMinMp() {
-        int max_level = 200;
+        int max_level = 300;
         int cygnus_max_level = 120;
 
         BiFunction<Job,Integer,Integer> f = AssignAPProcessor::getMinMp;

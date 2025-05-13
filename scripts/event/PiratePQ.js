@@ -27,10 +27,10 @@ var isPq = true;
 var isGrindMode = false;     // stages done after breaking all boxes on maps
 
 var minPlayers = 3, maxPlayers = 6;
-var minLevel = 55, maxLevel = 100;
+var minLevel = 55, maxLevel = 255;
 var entryMap = 925100000;
 var exitMap = 925100700;
-var recruitMap = 251010404;
+var recruitMap = 000000004;
 var clearMap = 925100600;
 
 var minMapId = 925100000;

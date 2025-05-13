@@ -40,6 +40,7 @@ import client.command.commands.gm0.RanksCommand;
 import client.command.commands.gm0.RatesCommand;
 import client.command.commands.gm0.ReadPointsCommand;
 import client.command.commands.gm0.ReportBugCommand;
+import client.command.commands.gm0.RollCommand;
 import client.command.commands.gm0.ShowRatesCommand;
 import client.command.commands.gm0.StaffCommand;
 import client.command.commands.gm0.StatDexCommand;
@@ -55,6 +56,8 @@ import client.command.commands.gm1.GotoCommand;
 import client.command.commands.gm1.MobHpCommand;
 import client.command.commands.gm1.WhatDropsFromCommand;
 import client.command.commands.gm1.WhoDropsCommand;
+import client.command.commands.gm1.StylistCommand;
+//import client.command.commands.gm1.aio;
 import client.command.commands.gm2.ApCommand;
 import client.command.commands.gm2.BombCommand;
 import client.command.commands.gm2.BuffCommand;
@@ -346,11 +349,13 @@ public class CommandsExecutor {
         addCommand("credits", StaffCommand.class);
         addCommand("uptime", UptimeCommand.class);
         addCommand("gacha", GachaCommand.class);
+        //addCommand("goto", GotoCommandREG.class);
         addCommand("dispose", DisposeCommand.class);
         addCommand("changel", ChangeLanguageCommand.class);
         addCommand("equiplv", EquipLvCommand.class);
         addCommand("showrates", ShowRatesCommand.class);
         addCommand("rates", RatesCommand.class);
+		addCommand("roll", RollCommand.class);
         addCommand("online", OnlineCommand.class);
         addCommand("gm", GmCommand.class);
         addCommand("reportbug", ReportBugCommand.class);
@@ -379,6 +384,7 @@ public class CommandsExecutor {
         addCommand("whodrops", 1, WhoDropsCommand.class);
         addCommand("buffme", 1, BuffMeCommand.class);
         addCommand("goto", 1, GotoCommand.class);
+        addCommand("stylist", 1, StylistCommand.class);
 
         commandsNameDesc.add(levelCommandsCursor);
     }

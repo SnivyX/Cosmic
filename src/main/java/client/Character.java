@@ -420,6 +420,34 @@ public class Character extends AbstractCharacterObject {
         setPosition(new Point(0, 0));
     }
 
+    private String dataSearch;
+    private ArrayList<Integer> dataSearchArr;
+    private String dataSearchType;
+
+    public String getDataSearch() {
+        return dataSearch;
+    }
+
+    public void setDataSearch(String result) {
+        dataSearch = result;
+    }
+
+    public ArrayList<Integer> getDataSearchArr() {
+        return dataSearchArr;
+    }
+
+    public void setDataSearchArr(ArrayList<Integer> arr) {
+        dataSearchArr = arr;
+    }
+
+    public String getDataSearchType() {
+        return dataSearchType;
+    }
+
+    public void setDataSearchType(String dataSearchType) {
+        this.dataSearchType = dataSearchType;
+    }
+
     private static Job getJobStyleInternal(int jobid, byte opt) {
         int jobtype = jobid / 100;
 
@@ -10194,12 +10222,12 @@ public class Character extends AbstractCharacterObject {
                 public void run() {
                     if (pendantExp < 3) {
                         pendantExp++;
-                        message("Pendant of the Spirit has been equipped for " + pendantExp + " hour(s), you will now receive " + pendantExp + "0% bonus exp.");
+                        message("Pendant of the Spirit has been equipped enough time to pass to the next stage, you will now receive " + pendantExp + "0% bonus exp.");
                     } else {
                         pendantOfSpirit.cancel(false);
                     }
                 }
-            }, 3600000); //1 hour
+            }, 600000); //1 hour
         }
     }
 
@@ -10960,6 +10988,8 @@ public class Character extends AbstractCharacterObject {
             e.printStackTrace();
         }
     }
+    // Monster Codex
+
 
     //EVENTS
     private byte team = 0;

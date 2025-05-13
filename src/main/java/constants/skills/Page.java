@@ -31,6 +31,6 @@ public class Page {
     public static final int FINAL_ATTACK_BW = 1200003;
     public static final int SWORD_BOOSTER = 1201004;
     public static final int BW_BOOSTER = 1201005;
-    public static final int THREATEN = 1201006;
+    public static final int FORTITUDE = 1201006;
     public static final int POWER_GUARD = 1201007;
 }

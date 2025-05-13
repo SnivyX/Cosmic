@@ -1,40 +1,20 @@
-/*
-    This file is part of the HeavenMS MapleStory Server, commands OdinMS-based
-    Copyleft (L) 2016 - 2019 RonanLana
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Affero General Public License as
-    published by the Free Software Foundation version 3 as published by
-    the Free Software Foundation. You may not use, modify or distribute
-    this program under any other version of the GNU Affero General Public
-    License.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-/*
-   @Author: Arthur L - Refactored command content into modules
-*/
 package client.command.commands.gm2;
 
 import client.Character;
 import client.Client;
 import client.command.Command;
-import constants.id.NpcId;
 import provider.Data;
 import provider.DataProvider;
 import provider.DataProviderFactory;
 import provider.DataTool;
 import provider.wz.WZFiles;
+import scripting.npc.NPCScriptManager;
 import server.ItemInformationProvider;
 import server.quest.Quest;
+import tools.PacketCreator;
 import tools.Pair;
+
+import java.util.ArrayList;
 
 public class SearchCommand extends Command {
     private static Data npcStringData;
@@ -61,6 +41,11 @@ public class SearchCommand extends Command {
         }
         StringBuilder sb = new StringBuilder();
 
+        boolean item = false;
+        boolean mob = false;
+        boolean npc = false;
+        ArrayList<Integer> searchdata = new ArrayList<>();
+
         String search = joinStringFrom(params, 1);
         long start = System.currentTimeMillis();//for the lulz
         Data data = null;
@@ -86,10 +71,19 @@ public class SearchCommand extends Command {
                 String name;
 
                 if (searchType == 0) {
+                    int counter = -1;
                     for (Data searchData : data.getChildren()) {
                         name = DataTool.getString(searchData.getChildByPath("name"), "NO-NAME");
                         if (name.toLowerCase().contains(search.toLowerCase())) {
-                            sb.append("#b").append(Integer.parseInt(searchData.getName())).append("#k - #r").append(name).append("\r\n");
+                            counter++;
+                            //sb.append("#b").append(Integer.parseInt(searchData.getName())).append("#k - #r").append(name).append("#l\r\n");
+                            sb.append("#L").append(counter).append("##b").append(Integer.parseInt(searchData.getName())).append("#k - #r").append(name).append("#l\r\n");
+                            searchdata.add(Integer.parseInt(searchData.getName()));
+                            if (params[0].equalsIgnoreCase("MOB") || params[0].equalsIgnoreCase("MONSTER")) {
+                                mob = true;
+                            } else if (params[0].equalsIgnoreCase("NPC")) {
+                                npc = true;
+                            }
                         }
                     }
                 } else if (searchType == 1) {
@@ -118,10 +112,14 @@ public class SearchCommand extends Command {
                 }
             }
         } else {
+            int counter = -1;
             for (Pair<Integer, String> itemPair : ItemInformationProvider.getInstance().getAllItems()) {
                 if (sb.length() < 32654) {//ohlol
                     if (itemPair.getRight().toLowerCase().contains(search.toLowerCase())) {
-                        sb.append("#b").append(itemPair.getLeft()).append("#k - #r").append(itemPair.getRight()).append("\r\n");
+                        counter++;
+                        sb.append("#L").append(counter).append("##b").append(itemPair.getLeft()).append("#k - #r#z").append(itemPair.getLeft()).append("##l\r\n");
+                        searchdata.add(itemPair.getLeft());
+                        item = true;
                     }
                 } else {
                     sb.append("#bCouldn't load all items, there are too many results.\r\n");
@@ -129,11 +127,18 @@ public class SearchCommand extends Command {
                 }
             }
         }
-        if (sb.length() == 0) {
+        if (sb.isEmpty()) {
             sb.append("#bNo ").append(params[0].toLowerCase()).append("s found.\r\n");
         }
         sb.append("\r\n#kLoaded within ").append((double) (System.currentTimeMillis() - start) / 1000).append(" seconds.");//because I can, and it's free
 
-        c.getAbstractPlayerInteraction().npcTalk(NpcId.MAPLE_ADMINISTRATOR, sb.toString());
+        if (!item && !mob && !npc) {
+            c.sendPacket(PacketCreator.getNPCTalk(9010000, (byte) 0, sb.toString(), "00 00", (byte) 0));
+        } else {
+            c.getPlayer().setDataSearch(sb.toString());
+            c.getPlayer().setDataSearchArr(searchdata);
+            c.getPlayer().setDataSearchType(item ? "item" : (mob ? "mob" : "npc"));
+            NPCScriptManager.getInstance().start(c, 1032009, "search", c.getPlayer());
+        }
     }
 }

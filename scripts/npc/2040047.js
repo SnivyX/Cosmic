@@ -49,7 +49,7 @@ function action(mode, type, selection) {
         if (status == 0) {
             cm.sendNext("To return back to the recruitment map, follow this way.");
         } else {
-            cm.warp(221024500);
+            cm.warp(000000004);
             cm.dispose();
         }
     } else {
@@ -57,7 +57,7 @@ function action(mode, type, selection) {
             var outText = "Once you leave the map, you'll have to restart the whole quest if you want to try it again.  Do you still want to leave this map?";
             cm.sendYesNo(outText);
         } else if (mode == 1) {
-            cm.warp(922010000); // Warp player
+            cm.warp(000000004); // Warp player
             cm.dispose();
         }
     }

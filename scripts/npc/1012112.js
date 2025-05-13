@@ -47,7 +47,7 @@ function action(mode, type, selection) {
             status--;
         }
 
-        if (cm.getMapId() == 100000200) {
+        if (cm.getMapId() == 000000004) {
             if (status == 0) {
                 em = cm.getEventManager("HenesysPQ");
                 if (em == null) {
