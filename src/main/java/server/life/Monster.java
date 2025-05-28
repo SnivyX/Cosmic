@@ -901,7 +901,6 @@ public class Monster extends AbstractLoadedLife {
 
     public void dispatchMonsterKilled(boolean hasKiller) {
         processMonsterKilled(hasKiller);
-
         EventInstanceManager eim = getMap().getEventInstance();
         if (eim != null) {
             if (!this.getStats().isFriendly()) {
@@ -910,6 +909,7 @@ public class Monster extends AbstractLoadedLife {
                 eim.friendlyKilled(this, hasKiller);
             }
         }
+        getMap().dismissRemoveAfter(this);
     }
 
     private synchronized void processMonsterKilled(boolean hasKiller) {
