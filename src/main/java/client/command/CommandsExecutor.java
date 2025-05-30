@@ -58,6 +58,7 @@ import client.command.commands.gm1.WhatDropsFromCommand;
 import client.command.commands.gm1.WhoDropsCommand;
 import client.command.commands.gm1.StylistCommand;
 //import client.command.commands.gm1.aio;
+import client.command.commands.gm1.OreBagCommand;
 import client.command.commands.gm2.ApCommand;
 import client.command.commands.gm2.BombCommand;
 import client.command.commands.gm2.BuffCommand;
@@ -385,7 +386,7 @@ public class CommandsExecutor {
         addCommand("buffme", 1, BuffMeCommand.class);
         addCommand("goto", 1, GotoCommand.class);
         addCommand("stylist", 1, StylistCommand.class);
-
+        addCommand("orebag", 1, OreBagCommand.class);
         commandsNameDesc.add(levelCommandsCursor);
     }
 

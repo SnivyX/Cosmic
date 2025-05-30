@@ -430,6 +430,7 @@ public final class Channel {
         }
     }
 
+
     public boolean isConnected(String name) {
         return getPlayerStorage().getCharacterByName(name) != null;
     }

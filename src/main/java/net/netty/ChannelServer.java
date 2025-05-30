@@ -5,6 +5,7 @@ import io.netty.channel.Channel;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import server.expeditions.Expedition;
 
 public class ChannelServer extends AbstractServer {
     private final int world;
@@ -36,5 +37,9 @@ public class ChannelServer extends AbstractServer {
         }
 
         nettyChannel.close().syncUninterruptibly();
+    }
+
+    public Expedition getConnectedMacs() {
+        return null;
     }
 }

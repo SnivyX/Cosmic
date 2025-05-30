@@ -37,6 +37,7 @@ import client.inventory.PetDataFactory;
 import client.inventory.WeaponType;
 import client.inventory.manipulator.CashIdGenerator;
 import client.inventory.manipulator.InventoryManipulator;
+import client.inventory.OreBagInventory;
 import client.keybind.KeyBinding;
 import client.keybind.QuickslotBinding;
 import client.newyear.NewYearCardRecord;
@@ -356,6 +357,7 @@ public class Character extends AbstractCharacterObject {
     private boolean pendingNameChange; //only used to change name on logout, not to be relied upon elsewhere
     private long loginTime;
     private boolean chasing = false;
+    private OreBagInventory oreBag;
 
     private Character() {
         super.setListener(new AbstractCharacterListener() {
@@ -11027,6 +11029,12 @@ public class Character extends AbstractCharacterObject {
 
     public void setLastSnowballAttack(long time) {
         this.snowballattack = time;
+    }
+
+    //Ore Bag
+    public OreBagInventory getOreBag() {
+        if (oreBag == null) oreBag = new OreBagInventory(this.id);
+        return oreBag;
     }
 
     // MCPQ

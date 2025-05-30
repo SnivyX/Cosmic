@@ -529,7 +529,7 @@ public final class UseCashItemHandler extends AbstractPacketHandler {
                 Shop shop = ShopFactory.getInstance().getShop(1338);
                 if (shop != null) {
                     shop.sendShop(c);
-                    remove(c, position, itemId);
+                    //remove(c, position, itemId);
                 }
             } else {
                 c.sendPacket(PacketCreator.enableActions());
