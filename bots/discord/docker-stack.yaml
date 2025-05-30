@@ -1,0 +1,17 @@
+version: "3"
+services:
+  bot:
+    image: ottersprod/otters-discord:${GIT_COMMIT_HASH:-latest}
+    restart: unless-stopped
+    secrets:
+      - discord_token
+      - openai_key
+    volumes:
+      # Config changes can be reloaded without rebuilding the image.
+      # Still requires a redeployment as they're sourced on startup.
+      - /home/deploy/database.db:/app/database.db
+secrets:
+  discord_token:
+    external: true
+  openai_key:
+    external: true
